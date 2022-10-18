@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block content %}
 
 <div class="album py-5 bg-light">
@@ -7,10 +7,7 @@
 
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
-      
-      
-
-      <h1>{{individual|upper}}</h1>
+      {% for nov in novedades %}
 
 
       <div class="col">
@@ -18,8 +15,9 @@
           <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg"
             role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
             <title>Placeholder</title>
+            <img src="{% static 'StickerApp/bob.jpg' %}" alt="My image">
             <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef"
-              dy=".3em">{{individual}}</text>
+              dy=".3em">{{sticker}}</text>
           </svg>
 
           <div class="card-body">
@@ -27,7 +25,9 @@
               content. This content is a little bit longer.</p>
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                <a href="{% url 'individual' nov %}">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                </a>
                 <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
               </div>
               <small class="text-muted">9 mins</small>
@@ -35,7 +35,7 @@
           </div>
         </div>
       </div>
-      
+      {% endfor %}
 
     </div>
   </div>

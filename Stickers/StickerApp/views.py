@@ -13,5 +13,10 @@ def index (request):
 def individual (request, name):
     id = stickers.index(name)
     individual = stickers[id]
-    context = {'stickers': stickers, 'titulo': id+1, 'individual': individual}
+    context = {'stickers': stickers, 'titulo': individual, 'individual': individual}
     return render (request, "individual.html", context)
+
+def novedades (request):
+    novedades = ['nov1']
+    context = {'novedades': novedades, 'titulo':'Novedades'}
+    return render (request, "novedades.html", context)
