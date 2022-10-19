@@ -8,33 +8,18 @@
   <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
   <meta name="generator" content="Hugo 0.84.0">
   <title>Stickers</title>
+  
   <!-- CSS only -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-
   <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/album/">
 
-
+  <!-- CSS Propio -->
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'StickerApp/styles.css' %}">
 
   <!-- Bootstrap core CSS -->
   <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <style>
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      user-select: none;
-    }
-
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-      }
-    }
-  </style>
-
 
 </head>
 
@@ -81,11 +66,11 @@
 
   <main>
 
-    <section class="py-5 text-center container">
+    <section class="py-5 text-center fluid-container fondo">
       <div class="row py-lg-5">
         <div class="col-lg-6 col-md-8 mx-auto">
-          <h1 class="fw-light">{{titulo}}</h1>
-          <p class="lead text-muted">Buscá en nuestro catalogo todos los stickers </p>
+          <h1 class="fw-dark titulo">{{titulo}}</h1>
+          <p class="lead text-dark subtitulo">Buscá en nuestro catalogo todos los stickers </p>
           <p>
             <a href="{% url 'index' %}" class="btn btn-primary my-2">Home</a>
             <a href="{% url 'novedades' %}" class="btn btn-secondary my-2">Novedades</a>
