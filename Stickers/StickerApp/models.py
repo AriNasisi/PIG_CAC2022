@@ -1,3 +1,4 @@
+from tabnanny import verbose
 from django.db import models
 
 # Create your models here.
@@ -36,9 +37,9 @@ class Item_pedido(models.Model):
 
     # Argumentos del modelo
     pedido: models.ForeignKey(Pedido, on_delete=models.CASCADE)
-    sticker: models.ForeignKey(Sticker, on_delete=models.CASCADE)
-    cantidad: models.IntegerField(max_length=3)
-    tamaño: models.CharField(max_length=1, choices=TAMAÑO_STICKER)
+    sticker: models.ForeignKey(Sticker, on_delete=models.CASCADE, verbose_name='Sticker')
+    cantidad: models.IntegerField(max_length=3, verbose_name='Cantidad')
+    tamaño: models.CharField(max_length=10, choices=TAMAÑO_STICKER)
     
 
 

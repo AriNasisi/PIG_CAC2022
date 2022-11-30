@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from StickerApp.forms import CarritoForm
 
 # Create your views here.
 
@@ -16,3 +17,8 @@ def novedades (request):
     novedades = ['nov1']
     context = {'novedades': novedades, 'titulo':'Novedades'}
     return render (request, "novedades.html", context)
+
+def carrito (request):
+    carrito = CarritoForm()
+    context = {'stickers': stickers, 'titulo':'Carrito de compras', 'carrito': carrito}
+    return render (request, "carrito.html", context)

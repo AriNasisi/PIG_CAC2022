@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="album py-5 bg-light">
+  <div class="container">
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+
+      <div class="col">
+        <ul class="list-group">
+
+          {% for sticker in stickers %}
+          <li class="list-group-item">
+            <p>{{sticker}}</p>
+            <p>
+              <!-- <form action="{% url "carrito" %}" method="post">
+                {% csrf_token %}
+                {{ carritoForm }}
+                <input type="submit" value="Submit">
+              </form> -->
+            </p>
+          </li>
+
+          {% endfor %}
+
+        </ul>
+
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
