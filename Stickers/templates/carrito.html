@@ -11,18 +11,17 @@
       <div class="col">
         <ul class="list-group">
 
+
           {% for sticker in stickers %}
           <li class="list-group-item">
+            <form action="{% url " carrito" %}" method="post"></form>
             <p>{{sticker}}</p>
             <p>
-              <!-- <form action="{% url "carrito" %}" method="post">
-                {% csrf_token %}
-                {{ carritoForm }}
-                <input type="submit" value="Submit">
-              </form> -->
+              {% csrf_token %}
+              {{ carrito.as_p }}
             </p>
+            </form>
           </li>
-
           {% endfor %}
 
         </ul>
