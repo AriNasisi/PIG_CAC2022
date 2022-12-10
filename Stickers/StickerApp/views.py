@@ -1,9 +1,12 @@
 from django.shortcuts import render
-from StickerApp.forms import CarritoForm
+from .forms import CarritoForm
+from .models import Sticker
 
 # Create your views here.
 
-stickers = ['Primer Stk', 'Segundo Stk', 'Tercer Stk', 'Cuarto Stk', 'Quinto Stk', 'Sexto Stk']
+stickers = Sticker.objects.all()
+for sticker in stickers: 
+    print (sticker.imagen.url)
 
 def index (request):
     context = {'stickers': stickers, 'titulo': 'Catálogo'}
