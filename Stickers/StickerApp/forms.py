@@ -6,4 +6,4 @@ from StickerApp.models import Item_pedido
 class CarritoForm(forms.ModelForm):
     class Meta:
         model = Item_pedido
-        fields = ['sticker']
+        fields = ("pedido",)
