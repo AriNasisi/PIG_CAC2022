@@ -28,3 +28,8 @@
     font-size: 20px;
     font-weight: bold;
   }
+
+  .card-img-top {
+    max-height: 100%;
+    
+  }
