@@ -5,23 +5,32 @@
 <div class="album py-5 bg-light">
   <div class="container">
 
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+    <div class="row">
 
 
       <div class="col">
         <ul class="list-group">
 
 
-          {% for sticker in stickers %}
-          <li class="list-group-item">
-            <form action="{% url " carrito" %}" method="post"></form>
-            <p>{{sticker}}</p>
-            <p>
-              {% csrf_token %}
-              {{ carrito.as_p }}
-            </p>
-            </form>
-          </li>
+          {% for sticker in stickersCarrito %}
+          <div class="col">
+            <ul class="list-group">
+              <li class="list-group-item">
+                <img class="card-img-top" style="max-width: 7rem;" src="{{sticker.sticker.imagen.url}}" alt="{{sticker}}">
+                <div>
+                  <a href="" class="btn btn-primary">Agregar al carrito</a>
+                </div>
+                <span>
+                  <a href="" class="btn btn-primary">Agregar al carrito</a>
+                </span>
+                <span>
+                  <a href="" class="btn btn-primary">Agregar al carrito</a>
+                </span>
+
+              </li>
+            </ul>
+    
+          </div>
           {% endfor %}
 
         </ul>

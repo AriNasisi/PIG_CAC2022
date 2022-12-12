@@ -22,19 +22,30 @@ def novedades (request):
     return render (request, "novedades.html", context)
 
 def carrito (request):
-    pedido = {Pedido.comprador: User}
+    pedidoPendiente = Pedido.objects.get(estado = 'En revisión', comprador = request.user)
+    stickersCarrito = pedidoPendiente.item_pedido_set.all()
     carrito = CarritoForm()
-    context = {'stickers': stickers, 'titulo':'Carrito de compras', 'carrito': carrito}
+    context = {'stickersCarrito': stickersCarrito, 'titulo':'Carrito de compras', 'carrito': carrito}
     return render (request, "carrito.html", context)
 
-def agregarCarrito (request):
-    if request.method == 'POST':
-        pedidoPendiente = Pedido.objects.filter(estado = 'En revisión').filter(comprador = request.user)
-        if pedidoPendiente:
-            itemPedido =  Item_pedido(pedido=pedidoPendiente, sticker=request.sticker.id)
-            return redirect ("index")
-        else:
-            nuevoPedido = Pedido(comprador = request.user)
-            itemPedido =  Item_pedido(pedido=nuevoPedido, sticker=request.sticker.id)
-            return redirect ("index")
+def agregarCarrito (request, pk):
+
+    sticker = Sticker.objects.get(id=pk)
+    try:
+        pedidoPendiente = Pedido.objects.get(estado = 'En revisión', comprador = request.user)
+
+    except Pedido.DoesNotExist:
+        nuevoPedido = Pedido(comprador = request.user)
+        nuevoPedido.save()
+        itemPedido =  Item_pedido(pedido=nuevoPedido, sticker=sticker)
+        itemPedido.save()
+        return redirect ("index")
+    print(pedidoPendiente.id)
+    itemsDelPedido = pedidoPendiente.item_pedido_set.all()
+    print(itemsDelPedido)
+    itemPedido =  Item_pedido(pedido=pedidoPendiente, sticker=sticker)
+    itemPedido.save()
+    return redirect ("index")
+
+        
         
