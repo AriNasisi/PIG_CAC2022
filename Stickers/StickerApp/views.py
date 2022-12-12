@@ -11,9 +11,17 @@ def index (request):
     context = {'stickers': stickers, 'titulo': 'Catálogo'}
     return render (request, "index.html", context)
 
-def individual (request, name):
-    stickers = Sticker.objects.all()
-    context = {'stickers': stickers, 'titulo': name}
+def individual (request, pk):
+    if request.method == 'POST':
+        form = CarritoForm(request.POST)
+        if form.is_valid():
+            tamaño = form.cleaned_data.get('tamaño')
+            cantidad = form.cleaned_data.get('cantidad')
+
+            return redirect ("index")
+    sticker = Sticker.objects.get(id=pk)
+    carritoForm = CarritoForm()
+    context = {'sticker': sticker,'titulo':sticker, 'carritoForm': carritoForm}
     return render (request, "individual.html", context)
 
 def novedades (request):
@@ -24,7 +32,7 @@ def novedades (request):
 def carrito (request):
     pedidoPendiente = Pedido.objects.get(estado = 'En revisión', comprador = request.user)
     stickersCarrito = pedidoPendiente.item_pedido_set.all()
-    carrito = CarritoForm()
+
     context = {'stickersCarrito': stickersCarrito, 'titulo':'Carrito de compras', 'carrito': carrito}
     return render (request, "carrito.html", context)
 
@@ -47,5 +55,5 @@ def agregarCarrito (request, pk):
     itemPedido.save()
     return redirect ("index")
 
-        
-        
+
+

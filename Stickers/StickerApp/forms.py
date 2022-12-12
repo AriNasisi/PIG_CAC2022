@@ -7,3 +7,5 @@ class CarritoForm(forms.ModelForm):
     class Meta:
         model = Item_pedido
         fields = ['cantidad', 'tamaño']
+
+
