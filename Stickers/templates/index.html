@@ -12,11 +12,11 @@
 
       <div class="col">
         <div class="card">
-          <div style="height: 20rem; width: 100%;">
+          <div style="height: 20rem; width: 100%;" id="{{sticker.id}}">
             <img class="card-img-top" style="max-height: 100%;" src="{{sticker.imagen.url}}" alt="{{sticker}}">
           </div>
           <div class="card-body">
-            <h5 class="card-title">{{sticker}}</h5>
+            <h5 class="card-title">{% filter upper %}{{sticker}} {% endfilter %}</h5>
             <a href="{% url 'individual' sticker.id %}" class="btn btn-primary">Ver Sticker</a>
           </div>
         </div>

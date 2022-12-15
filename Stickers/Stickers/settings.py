@@ -80,7 +80,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'Stickers',
         'USER': 'postgres',
-        'PASSWORD': 'postgre',
+        'PASSWORD': 'postgres',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }
@@ -135,3 +135,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# handle login 
+LOGIN_REDIRECT_URL = "/StickerApp/"
+LOGOUT_REDIRECT_URL = "/StickerApp/"

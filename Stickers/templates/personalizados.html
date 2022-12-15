@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="album py-5 bg-light">
+  <div class="container">
+
+    <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 g-3">
+      <div class="col">
+        <div class="card" style="display: flex; justify-content: center; align-items: center">
+          <!--Register-->
+          <div class="container py-5">
+            <h2>Envianos tu sticker para que lo agreguemos!</h2>
+            <form method="POST" class="form-group">
+              {% csrf_token %}
+              {{ personalizado.as_p }}
+              <button class="btn btn-primary" type="submit">Enviar!</button>
+            </form>
+           
+          </div>
+
+        </div>
+        <div class="col"></div>
+
+      </div>
+
+
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -8,25 +8,23 @@
     <div class="row">
 
 
-      <div class="col">
-        <ul class="list-group">
+      <div id="inicio" class="col">
+        <ul class="list-group d-flex align-items-center">
 
 
           {% for sticker in stickersCarrito %}
           <div class="col">
             <ul class="list-group">
-              <li class="list-group-item">
-                <img class="card-img-top" style="max-width: 7rem;" src="{{sticker.sticker.imagen.url}}" alt="{{sticker}}">
-                <span>
-                  <div></div>
-                  <a href="" class="btn btn-primary">Agregar al carrito</a>
+              <li class="list-group-item d-flex align-items-center"  >
+                <img class="card-img-top" style="max-width: 7rem; margin-right: 10px;" src="{{sticker.sticker.imagen.url}}" alt="{{sticker}}">
+                <span style="margin-right: 10px;">
+                  <p>Cantidad: {{sticker.cantidad}}</p>
+                  <p>Tamaño: {{sticker.tamaño}}</p>
                 </span>
-                <span>
-                  <a href="" class="btn btn-primary">Agregar al carrito</a>
-                </span>
-                <span>
-                  <a href="" class="btn btn-primary">Agregar al carrito</a>
-                </span>
+                <span style="margin-right: 10px;">
+
+                  <a href="{% url 'eliminarDelCarrito' sticker.id %}" class="btn btn-primary">X</a>
+                </span>               
 
               </li>
             </ul>
@@ -35,12 +33,14 @@
           {% endfor %}
 
         </ul>
-
+        <a href="{% url 'finalizado' %}" class="btn btn-dark">Finalizar el pedido!</a>
       </div>
 
 
     </div>
   </div>
+  
 </div>
+
 
 {% endblock %}

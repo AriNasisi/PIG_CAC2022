@@ -14,22 +14,26 @@
           </div>
 
         </div>
-        <div class="card" >
+        <div class="card">
           <div class="card-body">
+            {% if user.is_authenticated %}
             <h5 class="card-title">{{sticker}}</h5>
-            <!-- <a href="{% url 'agregarCarrito' sticker.id %}" class="btn btn-primary">Agregar al carrito</a> -->
-            <form action="/your-name/" method="post">
+            <!-- <a href="{% url 'individual' sticker.id %}" class="btn btn-primary">Agregar al carrito</a> -->
+            <form action="{% url 'individual' sticker.id %}" method="post">
               {% csrf_token %}
               {{ carritoForm.as_table }}
               <input class="btn btn-primary" type="submit" value="Agregar al carrito">
-          </form>
+            </form>
+            {% else %}
+            <p>Logeate para poder agreagar los stickers al carrito! - <a href="{% url 'login' %}" class="link-dark">LogIn</a></p>
+            {% endif %}
           </div>
         </div>
 
       </div>
       <div class="card">
         <div class="col">
-          <img class="card-img-top" style="height: 100%;"  src="{% static "StickerApp/tamaño2.png" %}" alt="tamaño">
+          <img class="card-img-top" style="height: 100%;" src="{% static "StickerApp/tamaño2.png" %}" alt="tamaño">
         </div>
       </div>
 

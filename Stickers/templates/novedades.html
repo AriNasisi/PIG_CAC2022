@@ -17,7 +17,7 @@
           </div>
           <div class="card-body">
             <h5 class="card-title">{{sticker}}</h5>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <a href="{% url 'individual' sticker.id %}" class="btn btn-primary">Ver Sticker</a>
           </div>
         </div>
       {% endfor %}

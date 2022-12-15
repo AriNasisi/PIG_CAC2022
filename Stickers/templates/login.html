@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="album py-5 bg-light">
+  <div class="container">
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      <div class="col"></div>
+      <div class="col">
+        <div class="card" style="display: flex; justify-content: center; align-items: center">
+          <h2>Log In</h2>
+          <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-primary" style="margin: 5px;" type="submit">Log In</button>
+          </form>
+          <p>Si no tien usuario puede crear uno!</p>
+          <button type="button" style="margin: 5px;" class="btn btn-dark"><a href="{% url 'crear_usuario' %}" class="link-light">Crear Usuario</a></button>
+
+        </div>
+        <div class="col"></div>
+
+      </div>
+
+
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
